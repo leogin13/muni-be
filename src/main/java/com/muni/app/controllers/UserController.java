@@ -100,4 +100,13 @@ public class UserController {
         userService.validateOtp(request);
         return this.AuthenticateAndGetToken(new AuthRequestDTO(request.getEmail(), request.getPassword()));
     }
+
+    @GetMapping("/profiles")
+    public List<UserResponse> getAllUserProfile() {
+        try {
+            return userService.getAllUser();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
